@@ -3,6 +3,5 @@ export const initialState = {
     items: [],
     error: null,
     isLoading: false,
-    isFollowing: false,
   }
 };

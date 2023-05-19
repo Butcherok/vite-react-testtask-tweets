@@ -1,10 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectUsers } from '../../redux/selectors';
-import { putUser } from '../../redux/usersApi';
+import UserCard from '../userCard/userCard';
 
 function UserList() {
   const users = useSelector(selectUsers);
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -12,13 +11,12 @@ function UserList() {
         {users.map(({ id, avatar, tweets, followers, user }) => {
           return (
             <li key={id}>
-              <img src={avatar} alt={user} />
-              <p>{user}</p>
-              <p>Tweets: {tweets}</p>
-              <p>Followers: {followers}</p>
-              <button type="button" onClick={() => dispatch(putUser())}>
-                Follow
-              </button>
+              <UserCard
+                avatar={avatar}
+                tweets={tweets}
+                followers={followers}
+                user={user}
+              />
             </li>
           );
         })}
