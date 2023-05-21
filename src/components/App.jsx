@@ -1,28 +1,25 @@
-import { useDispatch, useSelector } from 'react-redux';
-import UserList from './usersList/usersList';
-import { selectError } from '../redux/selectors';
-import { useEffect } from 'react';
-import { fetchUsers } from '../redux/usersApi';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './layout/layout';
+import { CssBaseline } from '@mui/material';
 
-function App() {
-  // const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const dispatch = useDispatch();
+const Home = lazy(() => import('../pages/homePage'));
+const Tweets = lazy(() => import('../pages/tweetsPage'));
+const NotFound = lazy(() => import('../pages/notFound'));
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-    if (error) {
-      console.log(error);
-      // alert.error(error);
-    }
-  }, [dispatch, error]);
 
+export default function App() {
   return (
     <>
-      <h1>users</h1>
-      <UserList />
+      <CssBaseline>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="tweets" element={<Tweets />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </CssBaseline>
     </>
   );
 }
-
-export default App;
