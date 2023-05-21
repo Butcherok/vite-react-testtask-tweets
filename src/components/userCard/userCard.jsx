@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { putUser } from '../../services/usersApi';
+import { Box, Button, Typography } from '@mui/material';
+import { avatarBorderStyle, avatarBoxStyle, buttonActiveStyles, contentBoxStyle, dividerStyle, logoBoxStyle, logoStyle } from './userCardStyles';
+import Logo from '../../assets/logo.svg';
+import ImageBg from '../../assets/img-1.webp';
+import { buttonStyles, centredItemsStyles, contentStyles } from '../../shared/basicStyles';
 
 function UserCard({ avatar, tweets, followers, user, following, id }) {
   const [card, setCard] = useState([]);
@@ -27,14 +32,59 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
 
   return (
     <>
-      
-      <img src={userAvatar} alt={user} />
-      <p>{user}</p>
-      <p>Tweets: {normalizeNumber(tweets)}</p>
-      <p>Followers: {normalizeNumber(getFollowers)}</p>
-      <button type="button" onClick={handleClick}>
+      <Box sx={logoBoxStyle}>
+        <Box
+          component="img"
+          src={Logo}
+          alt="Goit logo"
+          width="76px"
+          height="22px"
+          loading="lazy"
+          sx={logoStyle}
+        />
+        <img
+          src={ImageBg}
+          alt="Background frame"
+          width="308"
+          height="168"
+          loading="lazy"
+        />
+      </Box>
+
+      <Box sx={dividerStyle}>
+        <Box sx={{ ...centredItemsStyles, ...avatarBorderStyle }}>
+          <Box sx={avatarBoxStyle}>
+            <img
+              src={userAvatar}
+              alt={user}
+              width="62"
+              height="62"
+              loading="lazy"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      <Box sx={{ ...centredItemsStyles, ...contentBoxStyle }}>
+        <Typography sx={{ ...contentStyles, color: 'primary.darker' }}>
+          {name}
+        </Typography>
+        <Typography sx={contentStyles}>
+          {normalizeNumber(tweets)} tweets
+        </Typography>
+        <Typography sx={contentStyles}>
+          {normalizeNumber(getFollowers)} followers
+        </Typography>
+      </Box>
+
+      <Button
+        onClick={handleClick}
+        data-follow={getFollowing}
+        variant="contained"
+        sx={{ ...buttonStyles, ...(getFollowing && { ...buttonActiveStyles }) }}
+      >
         {!getFollowing ? 'follow' : 'following'}
-      </button>
+      </Button>
     </>
   );
 }

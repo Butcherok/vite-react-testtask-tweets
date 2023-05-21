@@ -3,6 +3,9 @@ import UserCard from '../userCard/userCard';
 import { useEffect, useState } from 'react';
 import { fetchUsers } from '../../services/usersApi';
 import LoadMore from '../loadMore/loadMore';
+import { ListItem } from '@mui/material';
+import { centredItemsStyles } from '../../shared/basicStyles';
+import { tweetsItemStyle } from '../userCard/userCardStyles';
 
 function UserList() {
   const [cards, setCards] = useState([]);
@@ -41,7 +44,11 @@ function UserList() {
       <ul>
         {cards.map(({ id, avatar, tweets, followers, user, following }) => {
           return (
-            <li key={id}>
+            <ListItem
+              component="li"
+              sx={{ ...centredItemsStyles, ...tweetsItemStyle }}
+              key={id}
+            >
               <UserCard
                 id={id}
                 avatar={avatar}
@@ -50,7 +57,7 @@ function UserList() {
                 user={user}
                 following={following}
               />
-            </li>
+            </ListItem>
           );
         })}
       </ul>
