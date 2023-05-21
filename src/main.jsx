@@ -9,7 +9,7 @@ import { theme } from './shared/constStyles';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/vite-react-testtask-tweets/">
+      <BrowserRouter basename={import.meta.env.DEV ? '/' : '/vite-react-testtask-tweets/'}>
         <App />
       </BrowserRouter>
     </ThemeProvider>
