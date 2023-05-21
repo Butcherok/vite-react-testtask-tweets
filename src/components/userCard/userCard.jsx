@@ -27,6 +27,7 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
 
   return (
     <>
+      
       <img src={userAvatar} alt={user} />
       <p>{user}</p>
       <p>Tweets: {normalizeNumber(tweets)}</p>

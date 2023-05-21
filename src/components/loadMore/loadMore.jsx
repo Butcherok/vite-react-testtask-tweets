@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { buttonStyles } from '../../shared/basicStyles';
 
-const LoadMore = (cards, loadMore) => {
+const LoadMore = ({cards, loadMore}) => {
   return (
     <Box>
-      <button type="button" disabled={!cards.length} onClick={() => loadMore()}>
+      <Button
+        disabled={!cards.length}
+        sx={{ ...buttonStyles, bgcolor: 'secondary.darker' }}
+        onClick={loadMore}
+      >
         Load More
-      </button>
+      </Button>
     </Box>
   );
 };

@@ -1,15 +1,19 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import AppNavBar from '../appBar/appBar';
 
 const Layout = () => {
   return (
     <Box>
       <AppNavBar />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <Box component="main" sx={{ pt: '28px', pb: '60px' }}>
+        <Container>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </Container>
+      </Box>
     </Box>
   );
 };

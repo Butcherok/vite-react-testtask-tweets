@@ -7,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ebd8ff;
+  color: #373737;
 }
 
 code {
@@ -44,4 +46,5 @@ ol {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }

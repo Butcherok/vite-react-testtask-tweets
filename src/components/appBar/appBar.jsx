@@ -1,19 +1,14 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import { Navigation } from '../navigation/navigation';
+import { Container, AppBar as AppBarMui } from '@mui/material';
+import { appBarStyle, containerStyle } from './appBarStyles';
 
 const AppNavBar = () => {
   return (
-    <>
-      <Box sx={{ flexGrow: 1, width: 1 }}>
-        <AppBar position="static">
-          <Toolbar sx={{ flexGrow: 1, justifyContent: 'space-between' }}>
-            <Navigation />
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </>
+    <AppBarMui position="static" sx={appBarStyle}>
+      <Container sx={containerStyle}>
+        <Navigation />
+      </Container>
+    </AppBarMui>
   );
 };
 export default AppNavBar;
