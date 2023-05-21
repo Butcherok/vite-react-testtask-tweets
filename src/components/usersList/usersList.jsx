@@ -2,6 +2,7 @@ import { animateScroll as scroll } from 'react-scroll';
 import UserCard from '../userCard/userCard';
 import { useEffect, useState } from 'react';
 import { fetchUsers } from '../../services/usersApi';
+import LoadMore from '../loadMore/loadMore';
 
 function UserList() {
   const [cards, setCards] = useState([]);
@@ -53,9 +54,7 @@ function UserList() {
           );
         })}
       </ul>
-      <button type="button" disabled={!cards.length} onClick={loadMore}>
-        Load More
-      </button>
+      <LoadMore cards={cards} loadMore={loadMore} />
     </>
   );
 }

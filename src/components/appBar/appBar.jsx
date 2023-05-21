@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { Navigation } from '../navigation/navigation';
 
-export default function AppNavBar() {
+const AppNavBar = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1, width: 1 }}>
@@ -15,4 +15,5 @@ export default function AppNavBar() {
       </Box>
     </>
   );
-}
+};
+export default AppNavBar;

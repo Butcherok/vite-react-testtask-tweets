@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { putUser } from '../../services/usersApi';
 
-function UserCard({ id, avatar, tweets, followers, user, following }) {
+function UserCard({ avatar, tweets, followers, user, following, id }) {
   const [card, setCard] = useState([]);
-
   const [cardId, setCardId] = useState(id);
   const [getFollowing, setGetFollowing] = useState(following);
   const [getFollowers, setGetFollowers] = useState(followers);
@@ -43,9 +42,9 @@ export default UserCard;
 
 UserCard.propTypes = {
   id: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
   tweets: PropTypes.number.isRequired,
   followers: PropTypes.number.isRequired,
-  user: PropTypes.string.isRequired,
   following: PropTypes.bool.isRequired,
+  avatar: PropTypes.string.isRequired,
 };
