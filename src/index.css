@@ -16,7 +16,7 @@ code {
     monospace;
 }
 
-#root {
+/* #root {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@ code {
   margin: 0 auto;
   padding: 20px;
   background-color: lightgray;
-}
+} */
 
 h1,
 h2,

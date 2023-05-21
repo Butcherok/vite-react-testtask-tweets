@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <Box sx={{ ...centredItemsStyles, flexDirection: 'column', gap: '28px' }}>
       <h1>
-        <span>Hello! i am your PhoneBook.</span>
-          </h1>
-          <UserList/>
+        <span>Enjoy watching!</span>
+      </h1>
+      <UserList />
     </Box>
   );
 };
