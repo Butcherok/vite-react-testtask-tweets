@@ -1,11 +1,23 @@
 import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { putUser } from '../../services/usersApi';
-import { Box, Button, Typography } from '@mui/material';
-import { avatarBorderStyle, avatarBoxStyle, buttonActiveStyles, contentBoxStyle, dividerStyle, logoBoxStyle, logoStyle } from './userCardStyles';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import {
+  avatarBorderStyle,
+  avatarBoxStyle,
+  buttonActiveStyles,
+  contentBoxStyle,
+  dividerStyle,
+  logoBoxStyle,
+  logoStyle,
+} from './userCardStyles';
 import Logo from '../../assets/logo.svg';
 import ImageBg from '../../assets/img-1.webp';
-import { buttonStyles, centredItemsStyles, contentStyles } from '../../shared/basicStyles';
+import {
+  buttonStyles,
+  centredItemsStyles,
+  contentStyles,
+} from '../../shared/basicStyles';
 
 function UserCard({ avatar, tweets, followers, user, following, id }) {
   const [card, setCard] = useState([]);
@@ -42,9 +54,9 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
           loading="lazy"
           sx={logoStyle}
         />
-        <img
+        <Avatar
           src={ImageBg}
-          alt="Background frame"
+          alt={user}
           width="308"
           height="168"
           loading="lazy"
