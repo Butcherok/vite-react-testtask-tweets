@@ -1,6 +1,7 @@
 {
   "name": "vite-react-testtask-tweets",
   "private": true,
+  "homepage": "https://butcherok.github.io/vite-react-testtask-tweets/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
