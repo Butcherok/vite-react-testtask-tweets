@@ -2,7 +2,7 @@
 
 ## Реалізація проекту
 
-- Проект зібраний за допомогою [create-react-app](https://create-react-app.dev/).
+- Проект зібраний за допомогою [ViteJs](https://vitejs.dev/).
 - Компоненти створені з використанням бібліотеки
   [MUI](https://mui.com/material-ui/getting-started/overview/)
 - В якості `backend` використано [mockapi.io](https://mockapi.io/)
