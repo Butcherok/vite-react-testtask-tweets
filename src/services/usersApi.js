@@ -7,7 +7,7 @@ export async function fetchUsers(page = 1) {
   return data;
 }
 
-export async function putUser(id, updateData) {
-  const { data } = await axios.put(`/users/${id}`, updateData);
+export async function putUser(id, followers) {
+  const { data } = await axios.put(`/users/${id}`, followers);
   return data;
 }

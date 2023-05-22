@@ -19,10 +19,14 @@ import {
   contentStyles,
 } from '../../shared/basicStyles';
 
-function UserCard({ avatar, tweets, followers, user, following, id }) {
-  const [card, setCard] = useState([]);
-  const [cardId, setCardId] = useState(id);
-  const [getFollowing, setGetFollowing] = useState(following);
+function UserCard({ avatar, tweets, followers, user, id }) {
+  const loadFromStorage = key => {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  };
+
+  const isFollowing = loadFromStorage(`tweet_id${id}`) === true;
+
   const [getFollowers, setGetFollowers] = useState(followers);
 
   const userAvatar = useMemo(() => `${avatar}?${Math.random()}`, [avatar]);
@@ -30,16 +34,20 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
   const normalizeNumber = number => number.toLocaleString('en-US');
 
   const handleClick = () => {
-    setCardId(id);
-    getFollowing ? setGetFollowing(false) : setGetFollowing(true);
+    const currentCard = {
+      id,
+      tweets,
+      avatar,
+      user,
+      followers: setGetFollowers(prev =>
+        isFollowing ? (prev -= 1) : (prev += 1)
+      ),
+    };
 
-    getFollowing
-      ? setGetFollowers(prev => prev - 1)
-      : setGetFollowers(prev => prev + 1);
-    putUser(cardId, { followers: getFollowers, following: getFollowing })
-      .then(getUser => setCard(getUser))
-      .catch(error => console.log(error.message));
-    console.log(card);
+    putUser(currentCard.id, getFollowers);
+    
+    const serializedState = JSON.stringify(isFollowing ? false : true);
+    localStorage.setItem(`tweet_id${id}`, serializedState);
   };
 
   return (
@@ -73,7 +81,7 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
 
       <Box sx={{ ...centredItemsStyles, ...contentBoxStyle }}>
         <Typography sx={{ ...contentStyles, color: 'primary.darker' }}>
-          {name}
+          {user}
         </Typography>
         <Typography sx={contentStyles}>
           {normalizeNumber(tweets)} tweets
@@ -85,11 +93,11 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
 
       <Button
         onClick={handleClick}
-        data-follow={getFollowing}
+        data-follow={isFollowing}
         variant="contained"
-        sx={{ ...buttonStyles, ...(getFollowing && { ...buttonActiveStyles }) }}
+        sx={{ ...buttonStyles, ...(isFollowing && { ...buttonActiveStyles }) }}
       >
-        {!getFollowing ? 'follow' : 'following'}
+        {!isFollowing ? 'follow' : 'following'}
       </Button>
     </>
   );
@@ -102,6 +110,5 @@ UserCard.propTypes = {
   user: PropTypes.string.isRequired,
   tweets: PropTypes.number.isRequired,
   followers: PropTypes.number.isRequired,
-  following: PropTypes.bool.isRequired,
   avatar: PropTypes.string.isRequired,
 };
