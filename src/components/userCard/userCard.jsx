@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { putUser } from '../../services/usersApi';
-import { Avatar, Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import {
   avatarBorderStyle,
   avatarBoxStyle,
@@ -54,13 +54,7 @@ function UserCard({ avatar, tweets, followers, user, following, id }) {
           loading="lazy"
           sx={logoStyle}
         />
-        <Avatar
-          src={ImageBg}
-          alt={user}
-          width="308"
-          height="168"
-          loading="lazy"
-        />
+        <img src={ImageBg} alt={user} width="308" height="168" loading="lazy" />
       </Box>
 
       <Box sx={dividerStyle}>

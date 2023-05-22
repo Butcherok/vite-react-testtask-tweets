@@ -7,14 +7,17 @@ const Home = () => {
       sx={{
         ...centredItemsStyles,
         gap: '30px',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         mb: '28px',
         flexWrap: 'wrap',
+        height: '50vw'
       }}
     >
       <Box sx={wrapperStyle}>
         <Typography sx={subtitleStyle}>
-          Greetings dear guest! Welcome to the Tweets app! Have some fun!
+          Greetings dear guest!<br/>
+          Welcome to the Tweets app!<br/>
+          Have some fun!
         </Typography>
       </Box>
     </Box>

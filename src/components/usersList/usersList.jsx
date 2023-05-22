@@ -6,7 +6,7 @@ import LoadMore from '../loadMore/loadMore';
 import { List, ListItem } from '@mui/material';
 import { centredItemsStyles } from '../../shared/basicStyles';
 import { tweetsItemStyle } from '../userCard/userCardStyles';
-import { listStyle } from './userListStyles';
+import { listStyle } from './usersListStyles';
 
 function UserList() {
   const [cards, setCards] = useState([]);
