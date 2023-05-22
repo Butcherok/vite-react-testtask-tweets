@@ -10,7 +10,6 @@ import { listStyle } from './usersListStyles';
 
 function UserList() {
   const [cards, setCards] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
