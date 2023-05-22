@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <Box sx={{ ...centredItemsStyles, flexDirection: 'column', gap: '28px' }}>
       <h1>
-        <span>Enjoy watching!</span>
+        <span>Make your choice!</span>
       </h1>
       <UserList />
     </Box>
